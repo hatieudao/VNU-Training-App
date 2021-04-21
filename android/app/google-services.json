@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "128626367927",
+    "project_id": "vnu-training",
+    "storage_bucket": "vnu-training.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128626367927:android:55d619e586d76781785c32",
+        "android_client_info": {
+          "package_name": "com.vnutraining"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "128626367927-oi14207ddt7rj6pbtqutrkc2kl88p76v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vnutraining",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "128626367927-bao340f9ofs9cdg892r7m4cdrjks6boq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAx2oj53Tj6jIy4IE6Qn3EGizmAgGbpi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "128626367927-bao340f9ofs9cdg892r7m4cdrjks6boq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
