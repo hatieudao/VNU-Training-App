@@ -5,8 +5,8 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 const Exams = ({ navigation }) => {
     let examList = []
     for (let i = 0; i < 10; ++i) examList.push(`Exam ${i + 1}`);
-    const selected = () => {
-        navigation.navigate('SettingTraining');
+    const selected = (number) => {
+        navigation.navigate('Training', {selectedExam: number });
     }
     return (
         <View style={styles.container}>
@@ -14,7 +14,7 @@ const Exams = ({ navigation }) => {
                 examList.map((item, index) => <TouchableHighlight
                     key={index}
                     style={styles.selectedButton}
-                    onPress={() => selected()}
+                    onPress={() => selected(index)}
                     underlayColor={'#909'}
                 >
                     <Text style={styles.nameExams} >{item}</Text>

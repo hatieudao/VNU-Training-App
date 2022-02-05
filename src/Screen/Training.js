@@ -1,25 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import {
-    StyleSheet,
-    Text,
-    View,
-    TouchableHighlight
-} from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 
-import Question from './../Component/Question'
+import Question from './../Component/Question';
+import AudioQuestion from './../Component/AudioQuestion';
+
+import { Audios } from '../cluster/Audios';
 
 const Training = ({ navigation, route }) => {
     const { reading, listening } = route.params;
-    const questions = [{
-        title: 'question 1',
-        data: ['A: A', 'B: B', 'C: C', 'D: D']
-    }, {
-        title: 'question 2',
-        data: ['A: A', 'B: B', 'C: C', 'D: D']
-    }, {
-        title: 'question 3',
-        data: ['A: A', 'B: B', 'C: C', 'D: D']
-    }];
+    const questions = Audios;
 
     const [number, setNumber] = useState(0);
     const [choiced, setChoiced] = useState([-1, -1, -1]);
@@ -27,31 +16,33 @@ const Training = ({ navigation, route }) => {
         let newState = choiced;
         newState[index] = selectionOfAQuestion;
         setChoiced(newState);
-    }
-
+    };
 
     const nextQuestion = () => {
         let next = number + 1 >= questions.length ? 0 : number + 1;
         setNumber(next);
-    }
+    };
     const preQuestion = () => {
         let pre = number - 1 < 0 ? questions.length - 1 : number - 1;
         setNumber(pre);
-    }
+    };
 
     return (
         <View style={styles.body}>
-            {
-                questions.map((item, pos) => (
-                    number === pos ? <Question
-                        key={pos}
-                        index={number}
-                        data={{ question: item.title, selections: item.data }}
-                        setChoice={setChoice}
-                        status={choiced[number]}
-                    /> : null
-                ))
-            }
+            {questions.map((item, pos) =>
+                number === pos
+                    ? item.type === 'listening' && (
+                        <AudioQuestion
+                            key={pos}
+                            index={number}
+                            data={{ question: item.title, selections: item.data }}
+                            setChoice={setChoice}
+                            status={choiced[number]}
+                            audio={item.audio}
+                        />
+                    )
+                    : null
+            )}
             <View style={styles.footer}>
                 <TouchableHighlight
                     style={styles.button}
@@ -62,7 +53,9 @@ const Training = ({ navigation, route }) => {
                 </TouchableHighlight>
 
                 <View>
-                    <Text>{number + 1}/{questions.length}</Text>
+                    <Text>
+                        {number + 1}/{questions.length}
+                    </Text>
                 </View>
                 <TouchableHighlight
                     style={styles.button}
@@ -80,12 +73,12 @@ const styles = StyleSheet.create({
     body: {
         flex: 1,
         justifyContent: 'space-evenly',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     question: {
         fontSize: 28,
         paddingLeft: 10,
-        backgroundColor: '#03fce8'
+        backgroundColor: '#03fce8',
     },
     button: {
         width: 150,
@@ -93,14 +86,14 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 32,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     footer: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
-    }
+        alignItems: 'center',
+    },
 });
 
 export default Training;

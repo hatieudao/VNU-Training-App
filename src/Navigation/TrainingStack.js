@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 const TrainingStack = () => (
     <Stack.Navigator>
         <Stack.Screen name="Exams" component={Exams} />
-        <Stack.Screen name="SettingTraining" component={SettingTraining} />
+        {/* <Stack.Screen name="SettingTraining" component={SettingTraining} /> */}
         <Stack.Screen name="Training" component={Training} />
     </Stack.Navigator>
 )
